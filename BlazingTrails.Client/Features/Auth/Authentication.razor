@@ -1,0 +1,25 @@
+﻿
+@page "/authentication/{action}"
+
+@using Microsoft.Extensions.Configuration
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+@inject NavigationManager NavManager
+@inject IConfiguration Config
+
+<RemoteAuthenticatorView Action="@Action">
+    <LogOut>
+        @{
+            var authority = (string)Config["Auth0:Authority"];
+            var clientId = (string)Config["Auth0:ClientId"];
+
+            NavManager.NavigateTo($"{authority}/v2/logout?client_id={clientId}&returnTo=https://localhost:5001");
+        }
+    </LogOut>
+</RemoteAuthenticatorView>
+
+@code {
+
+    [Parameter]
+    public string? Action { get; set; }
+}

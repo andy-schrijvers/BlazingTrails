@@ -1,0 +1,11 @@
+﻿.jumbotron {
+    display: flex;
+    flex-direction: column;
+    background: none; 
+}
+
+.jumbotron input[type=text] {
+    border: 2px solid var(--brand);
+    margin-left: auto;
+    margin-right: auto;
+}
